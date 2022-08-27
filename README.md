@@ -1,6 +1,6 @@
 # Bypass
 
-A Chrome extension to get URLs from any website painlessly.
+A Chrome extension to get obfuscated resources from any website painlessly.
 
 
 ## Installing
