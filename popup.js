@@ -17,7 +17,9 @@ analyze.addEventListener("click", async () => {
                 const images = response.map(image => {
                     let name = image.currentSrc.split('/');
                     name = name[name.length - 1];
-                    return `<li><a href=${image.currentSrc} target="_blank">${name}</a></li>`
+                    const height = image.height;
+                    const width = image.with;
+                    return `<li><a href=${image.currentSrc} target="_blank">${name} (${height} x ${width})}</a></li>`
                 });
                 const listImages = `<ul>${images.join('')}</ul>`;
                 const ele = document.createElement("span");
@@ -28,3 +30,13 @@ analyze.addEventListener("click", async () => {
     });
 
 });
+
+
+// Avoid popup closing after clicking anchor
+document.addEventListener('click', event => {
+    const a = event.target.closest('a[href]');
+    if (a) {
+      event.preventDefault();
+      chrome.tabs.create({url: a.href, active: false});
+    }
+  });
