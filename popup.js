@@ -13,7 +13,7 @@ analyze.addEventListener("click", async () => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, { name: "sendpopup" }, function (response) {
             if (response != null) {
-                const viewer = document.getElementById('viewer');
+                const display = document.getElementById('display');
                 const images = response.map(image => {
                     let name = image.currentSrc.split('/');
                     name = name[name.length - 1];
@@ -25,11 +25,11 @@ analyze.addEventListener("click", async () => {
                 const listImages = `<ul>${images.join('')}</ul>`;
                 const ele = document.createElement("span");
                 ele.innerHTML = listImages;
-                viewer.appendChild(ele);
+                display.appendChild(ele);
                 const allImagesButton = document.createElement('button');
                 allImagesButton.innerText = 'All images';
                 allImagesButton.onclick = showAllImages;
-                viewer.appendChild(allImagesButton);
+                display.appendChild(allImagesButton);
             }
         });
     });
