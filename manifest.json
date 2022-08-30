@@ -1,6 +1,6 @@
 {
     "name": "bypass",
-    "description": "Let's get some URLs!",
+    "description": "Let's get some resources!",
     "version": "0.1.0",
     "manifest_version": 3,
     "permissions": [
