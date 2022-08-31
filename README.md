@@ -1,7 +1,10 @@
-# Bypass
+# Workbox
 
-A Chrome extension to get obfuscated resources from any website painlessly.
+A Chrome extension toolkit.
 
+## Features
+
+* Extracts all images from a website
 
 ## Installing
 

@@ -1,17 +1,17 @@
 // popup.js
 
 
-const analyze = document.getElementById("analyze");
+const getimages = document.getElementById("getimages");
 
-analyze.addEventListener("click", async () => {
+getimages.addEventListener("click", async () => {
     // Sending message to background
-    chrome.runtime.sendMessage({ name: 'sendpopup' }, function (response) {
-        console.log('Response received:', response);
-    });
+    // chrome.runtime.sendMessage({ message: 'getimages' }, function (response) {
+    //     console.log('Response received:', response);
+    // });
 
     // Sending message to content
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, { name: "sendpopup" }, function (response) {
+        chrome.tabs.sendMessage(tabs[0].id, { command: "getimages" }, function (response) {
             if (response != null) {
                 const display = document.getElementById('display');
                 const images = response.map(image => {
