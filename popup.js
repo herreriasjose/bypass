@@ -2,12 +2,10 @@
 
 
 const getimages = document.getElementById("getimages");
-
 const getCommand = document.getElementById("getcommand");
 
 
 getCommand.addEventListener("change", async (a, b) => {
-    console.log('hit! ', getCommand.value)
     const value =  getCommand.value;
     switch (value) {
         case 'getimages':
@@ -20,12 +18,6 @@ getCommand.addEventListener("change", async (a, b) => {
             return;
     }
 
-
-});
-
-getimages.addEventListener("click", async () => {
-
-    sendMessageToContent("getimages");
 
 });
 
@@ -54,6 +46,8 @@ function handleResponse(response) {
     ele.innerHTML = listImages;
     display.appendChild(ele);
     const allImagesButton = document.createElement('button');
+    allImagesButton.classList.add('form-control');
+    allImagesButton.classList.add('m-2');
     allImagesButton.innerText = 'All images';
     allImagesButton.onclick = showAllImages;
     display.appendChild(allImagesButton);
@@ -72,12 +66,6 @@ function sendMessageToContent(command, parameters = null) {
 
 }
 
-function handleSelect(ele) {
-    console.log(el.value);
-}
-
-
-
 // Avoid popup closing after clicking anchor
 document.addEventListener('click', event => {
     const a = event.target.closest('a[href]');
@@ -89,7 +77,6 @@ document.addEventListener('click', event => {
 
 
 // Images
-
 
 const allImagesList = [];
 
