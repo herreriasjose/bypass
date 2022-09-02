@@ -14,6 +14,9 @@ getCommand.addEventListener("change", async (a, b) => {
         case 'getscreenshot':
             alert("Not available yet");
             return;
+        case 'getnanoid':
+            sendMessageToContent("getnanoid");
+            return;
         default:
             return;
     }

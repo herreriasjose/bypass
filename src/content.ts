@@ -1,4 +1,6 @@
-// content.js
+// content.ts
+
+import {nanoid} from 'nanoid';
 
 
 chrome.runtime.onMessage.addListener(
@@ -16,8 +18,13 @@ chrome.runtime.onMessage.addListener(
                 const imagesFiltered = [...images].map((image) => { return { currentSrc: image.currentSrc, height: image.naturalHeight, with: image.naturalWidth } });
                 sendResponse(imagesFiltered);
             }
+            if (message.command === 'getnanoid') {
+                const id: string = nanoid();
+                console.log('>>> id:', id);
+                sendResponse(id);
+            }
             if (message.command === 'sendResponse') {
-                response = 'Hi there';
+                response = 'Hi there!!';
                 sendResponse(response);
             }
         }
