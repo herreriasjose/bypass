@@ -1,6 +1,6 @@
 # Workbox
 
-A Chrome extension toolkit.
+A Chrome extension toolkit (nothing to do with <a href="https://developer.chrome.com/docs/workbox/service-worker-overview/">service workers</a>).
 
 ## Features
 
