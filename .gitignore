@@ -11,7 +11,7 @@
 /build
 
 # distribution
-/dist
+dist/
 
 # misc
 .DS_Store
