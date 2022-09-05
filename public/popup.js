@@ -37,6 +37,7 @@ function handleResponse(response) {
                 displayImages(data);
                 return;
             case "getnanoid":
+                alert('NanoId copied to clipboard');
                 console.log('>>> nanoid:', data);
                 return;
             default:

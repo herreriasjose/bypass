@@ -5,6 +5,7 @@ A Chrome extension toolkit (nothing to do with <a href="https://developer.chrome
 ## Features
 
 * Extracts all images from a website
+* Generate NanoId
 
 ## Installing
 
