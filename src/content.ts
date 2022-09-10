@@ -1,14 +1,15 @@
 // content.ts
 
-import {nanoid} from 'nanoid';
+import { nanoid } from 'nanoid';
 
+import downloadScreenShot from './screenshot';
 
 chrome.runtime.onMessage.addListener(
     function (message, sender, sendResponse) {
 
         const command = message.command;
         let response = null;
-       
+
         console.log(sender.tab ?
             ">>> Message received in content:" + JSON.stringify(message) + " from the script:" + sender.tab.url :
             ">>> Message received in content:" + JSON.stringify(message) + " from the extension");
@@ -21,9 +22,14 @@ chrome.runtime.onMessage.addListener(
                 sendResponse(response);
             }
             if (command === 'getnanoid') {
-                const id: string = nanoid();
-                response = { command, data: id }
+                let id: string = nanoid();
+                response = { command, data: id };
                 copyToClipboard(id);
+                sendResponse(response);
+            }
+            if (command === 'getscreenshot') {
+                response = { command, data: 'Taken screenshot' };
+                downloadScreenShot()
                 sendResponse(response);
             }
         }
@@ -31,8 +37,7 @@ chrome.runtime.onMessage.addListener(
 );
 
 
-
-async function copyToClipboard(textToCopy: string){
+async function copyToClipboard(textToCopy: string) {
     const textAreaToCopy = document.createElement('textarea');
     textAreaToCopy.value = textToCopy;
     textAreaToCopy.setAttribute('readonly', '');
@@ -43,3 +48,8 @@ async function copyToClipboard(textToCopy: string){
     document.execCommand('copy');
     document.body.removeChild(textAreaToCopy);
 }
+
+
+
+
+

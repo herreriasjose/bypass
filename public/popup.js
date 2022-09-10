@@ -8,8 +8,9 @@ getCommand.addEventListener("change", async (a, b) => {
         case 'getimages':
             sendMessageToContent("getimages");
             return;
-        case 'getscreenshot':
-            alert("Not available yet");
+            case 'getscreenshot':
+            sendMessageToContent("getscreenshot");
+            //alert("Not available yet");
             return;
         case 'getnanoid':
             sendMessageToContent("getnanoid");
@@ -39,6 +40,9 @@ function handleResponse(response) {
             case "getnanoid":
                 alert('NanoId copied to clipboard');
                 console.log('>>> nanoid:', data);
+                return;
+            case "getscreenshot":
+                alert('Screenshot taken');
                 return;
             default:
                 return;
