@@ -94,17 +94,15 @@ function displayImages(images) {
     const allImagesButton = document.createElement('button');
     allImagesButton.classList.add('form-control');
     allImagesButton.classList.add('m-2');
-    allImagesButton.innerText = 'All images';
+    allImagesButton.innerText = `All images (${allImagesList.length})`;
     allImagesButton.onclick = showAllImages;
     display.appendChild(allImagesButton);
 }
 
 function showAllImages() {
-    if (confirm(`Are you sure you want to open ${allImagesList.length} new tabs?`)) {
         for (let image of allImagesList) {
             chrome.tabs.create({ url: image });
         }
-    }
 }
 
 
