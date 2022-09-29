@@ -16,7 +16,8 @@ export default async function downloadScreenShot() {
         }
         if (linkElement != null) {
             linkElement.href = canvas.toDataURL('image/png');
-            linkElement.download = 'table.png';
+            const tagTitle = encodeURIComponent(document.title)
+            linkElement.download = `${tagTitle}.png`;
             linkElement.click();
         }
     });

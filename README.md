@@ -8,9 +8,17 @@ A Chrome extension toolkit (nothing to do with <a href="https://developer.chrome
 * Generate NanoId
 * Take Screenshot
 
+## Build
+
+```bash
+npm run build
+```
+
 ## Test
 
 ## Installing
+
+Build it and in [chrome://extensions/](chrome://extensions/) "Load unpacked" your dist folder.
 
 Refer to [https://developer.chrome.com/docs/extensions/mv3/getstarted/#unpacked](https://developer.chrome.com/docs/extensions/mv3/getstarted/#unpacked) to learn how to do it.
  
