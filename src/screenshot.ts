@@ -16,7 +16,8 @@ export default async function downloadScreenShot() {
         }
         if (linkElement != null) {
             linkElement.href = canvas.toDataURL('image/png');
-            const tagTitle = encodeURIComponent(document.title)
+            const nowUTC = new Date().toISOString()
+            const tagTitle = nowUTC + '-' + document.title.replace(/[/\\?%*:|"<>]/g, '-');
             linkElement.download = `${tagTitle}.png`;
             linkElement.click();
         }
