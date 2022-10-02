@@ -8,7 +8,7 @@ getCommand.addEventListener("change", async (a, b) => {
         case 'getimages':
             sendMessageToContent("getimages");
             return;
-            case 'getscreenshot':
+        case 'getscreenshot':
             sendMessageToContent("getscreenshot");
             //alert("Not available yet");
             return;
@@ -28,6 +28,8 @@ function sendMessageToBackground(command, parameters = null) {
 
 }
 
+
+// This function handle the response from the content
 function handleResponse(response) {
     console.log('>>> response:', response);
     const command = response.command;
@@ -38,11 +40,11 @@ function handleResponse(response) {
                 displayImages(data);
                 return;
             case "getnanoid":
-                alert('NanoId copied to clipboard');
+                launch_toast('NanoId copied to clipboard');
                 console.log('>>> nanoid:', data);
                 return;
             case "getscreenshot":
-                alert('Screenshot taken');
+                launch_toast('Screenshot taken');
                 return;
             default:
                 return;
@@ -70,6 +72,18 @@ document.addEventListener('click', event => {
         chrome.tabs.create({ url: a.href, active: false });
     }
 });
+
+// 
+
+function launch_toast(msg, duration=2000, parameters = null) {
+    var el = document.createElement("div");
+    el.setAttribute("style", "position:absolute;top:40%;left:20%;background-color:white;");
+    el.innerHTML = msg;
+    setTimeout(function () {
+        el.parentNode.removeChild(el);
+    }, duration);
+    document.body.appendChild(el);
+}
 
 
 // Deal with images
@@ -100,9 +114,9 @@ function displayImages(images) {
 }
 
 function showAllImages() {
-        for (let image of allImagesList) {
-            chrome.tabs.create({ url: image });
-        }
+    for (let image of allImagesList) {
+        chrome.tabs.create({ url: image });
+    }
 }
 
 
